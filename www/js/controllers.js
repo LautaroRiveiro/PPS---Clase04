@@ -21,8 +21,29 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $cordovaVibration) {
   $scope.settings = {
     enableFriends: true
   };
+
+
+  $scope.Vibrar = function(){
+    try{
+      $cordovaVibration.vibrate(10000); //Vibrar 10s
+    }
+    catch (err){
+      console.log(err);
+    }
+  }
+
+  $scope.DetenerVibrar = function(){
+    try{
+      $cordovaVibration.vibrate(0);
+    }
+    catch (err){
+      console.log(err);
+    }
+  }
+
+
 });
